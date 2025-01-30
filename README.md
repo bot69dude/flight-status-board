@@ -47,24 +47,19 @@ Ensure you have the following installed:
    npm run dev  
    ```
 
-## Running Tests
-To run unit tests:
-```sh
-npm test  # or yarn test
-```
 
 ## Deployment
 To build the project for production:
 ```sh
-npm run build  # or yarn build
+npm run build 
 ```
 To serve the built application:
 ```sh
-npm run preview  # or yarn preview
+npm run preview  
 ```
 
 ## Notes on Polling
-- The application fetches fresh flight data **every 30 minutes** to ensure up-to-date statuses.
+- The application fetches fresh flight data **every 30 seconds** to ensure up-to-date statuses.
 - If needed, you can adjust the polling interval in the code.
 
 ## Error Handling
@@ -80,7 +75,5 @@ npm run preview  # or yarn preview
 4. Push to the branch: `git push origin feature-branch`.
 5. Open a pull request.
 
-## License
-This project is licensed under the MIT License.
 
 ---
