@@ -1,50 +1,86 @@
-# React + TypeScript + Vite
+# Real-Time Flight Status Board
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
+This project is a React-based application built with TypeScript that mimics a real-time flight status board. It fetches flight data from a REST API and updates it every 30 seconds using polling.
 
-Currently, two official plugins are available:
+## Features
+- Displays a table of flight details, including:
+  - Flight Number
+  - Airline
+  - Origin
+  - Destination
+  - Departure Time
+  - Status (e.g., "On Time", "Delayed", "Boarding", "Departed")
+- Updates flight data every 30 minutes using polling.
+- Allows users to click on a flight row to view more detailed flight information.
+- Uses React Router for navigation.
+- Implements error handling for API failures or missing flight details.
+- Styled for clear and user-friendly readability.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## API Details
+- **Fetch all flights:** `GET https://flight-status-mock.core.travelopia.cloud/flights`
+- **Fetch flight by ID:** `GET https://flight-status-mock.core.travelopia.cloud/flights/:id`
 
-## Expanding the ESLint configuration
+## Tech Stack
+- **Language:** TypeScript
+- **Framework:** React
+- **HTTP Client:** Axios / Fetch API
+- **Testing:** Jest, Vitest, React Testing Library
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Prerequisites
+Ensure you have the following installed:
+- Node.js (>= 16.x)
+- npm (>= 8.x) or yarn
 
-- Configure the top-level `parserOptions` property like this:
+## Installation & Setup
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/bot69dude/flight-status-board.git
+   cd flight-status-board
+   ```
+2. Install dependencies:
+   ```sh
+   npm install  
+   ```
+3. Start the development server:
+   ```sh
+   npm run dev  
+   ```
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Running Tests
+To run unit tests:
+```sh
+npm test  # or yarn test
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+## Deployment
+To build the project for production:
+```sh
+npm run build  # or yarn build
 ```
+To serve the built application:
+```sh
+npm run preview  # or yarn preview
+```
+
+## Notes on Polling
+- The application fetches fresh flight data **every 30 minutes** to ensure up-to-date statuses.
+- If needed, you can adjust the polling interval in the code.
+
+## Error Handling
+- Displays user-friendly error messages if:
+  - There is a network failure.
+  - API request limit is exceeded.
+  - The requested flight details are unavailable.
+
+## Contribution Guidelines
+1. Fork the repository.
+2. Create a new branch: `git checkout -b feature-branch`.
+3. Commit changes: `git commit -m "Add new feature"`.
+4. Push to the branch: `git push origin feature-branch`.
+5. Open a pull request.
+
+## License
+This project is licensed under the MIT License.
+
+---
