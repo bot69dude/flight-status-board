@@ -25,7 +25,6 @@ This project is a React-based application built with TypeScript that mimics a re
 - **Language:** TypeScript
 - **Framework:** React
 - **HTTP Client:** Axios / Fetch API
-- **Testing:** Jest, Vitest, React Testing Library
 
 ## Prerequisites
 Ensure you have the following installed:
