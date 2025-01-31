@@ -1,4 +1,4 @@
-// src/components/FlightTable.tsx
+import { memo } from 'react';
 import { Flight } from '@/types/types';
 import { StatusIndicator } from './StatusIndicator';
 import {
@@ -15,7 +15,7 @@ interface FlightTableProps {
   flights: Flight[];
 }
 
-export const FlightTable = ({ flights }: FlightTableProps) => {
+export const FlightTable = memo(({ flights }: FlightTableProps) => {
   const navigate = useNavigate();
 
   return (
@@ -52,4 +52,4 @@ export const FlightTable = ({ flights }: FlightTableProps) => {
       </TableBody>
     </Table>
   );
-};
+});

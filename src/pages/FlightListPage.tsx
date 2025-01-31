@@ -1,17 +1,29 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { loadFlights } from '@/store/store';
 import { FlightTable } from '@/components/FlightTable';
 
 export const FlightListPage = () => {
   const dispatch = useAppDispatch();
-  const { flights, loading, error } = useAppSelector((state) => state.flights);
+  const { flights: currentFlights, loading, error } = useAppSelector((state) => state.flights);
+  const [flights, setFlights] = useState(currentFlights);
 
   useEffect(() => {
-    dispatch(loadFlights());
-    const interval = setInterval(() => dispatch(loadFlights()), 30000); 
+    const fetchData = async () => {
+      await dispatch(loadFlights());
+    };
+
+    fetchData(); 
+    const interval = setInterval(fetchData, 10000); 
+
     return () => clearInterval(interval);
   }, [dispatch]);
+
+  useEffect(() => {
+    if (JSON.stringify(currentFlights) !== JSON.stringify(flights)) {
+      setFlights(currentFlights);
+    }
+  }, [currentFlights]);
 
   return (
     <div className="p-8 max-w-6xl mx-auto">

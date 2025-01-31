@@ -58,3 +58,13 @@
     --chart-5: 340 75% 55%;
   }
 }
+
+@layer components {
+  .flight-row {
+    transition: background-color 0.3s ease;
+  }
+
+  .flight-row-updated {
+    background-color: rgba(99, 102, 241, 0.1); /* Indigo with 10% opacity */
+  }
+}
